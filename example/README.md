@@ -1,151 +1,74 @@
-# SKNumberPad Example
-
+# SKOnboarding Example
 ```dart
 import 'package:flutter/material.dart';
-import 'package:sk_numberpad_example/otp_screen.dart';
-import 'package:flutter/services.dart';
-import 'package:sk_numberpad/sk_numberpad.dart';
-import 'package:sk_numberpad_example/colors.dart';
-import 'login_screen.dart';
-
-var routes = <String, WidgetBuilder>{
-  "/OTPScreen": (BuildContext context) => OTPScreen(),
-};
+import 'package:sk_onboarding_screen/flutter_onboarding.dart';
+import 'package:sk_onboarding_screen/sk_onboarding_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      routes: routes,
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
   }
 }
 
-class LoginPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return LoginPageState();
+    return HomePageState();
   }
 }
 
-class LoginPageState extends State<LoginPage> {
-  String text = '1';
-  final mobileNoController = TextEditingController();
-  final FocusNode _mobileNoFocus = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+class HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _globalKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
-      body: Container(
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(height: 70),
-                          Image.asset('assets/message.png',
-                              width: 130, height: 130),
-                          SizedBox(height: 20),
-                          Text('Mobile Verification',
-                              style: new TextStyle(
-                                  fontFamily: 'HKGrotesk',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 24.0,
-                                  color: ColorsUtils.black)),
-                          SizedBox(height: 20),
-                          Text('We will send you an OTP on this mobile number',
-                              style: new TextStyle(
-                                  fontFamily: 'HKGrotesk',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 16.0,
-                                  color: ColorsUtils.grey)),
-                          SizedBox(height: 40),
-                          Text('Enter Mobile Number',
-                              style: new TextStyle(
-                                  fontFamily: 'HKGrotesk',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 16.0,
-                                  color: ColorsUtils.grey)),
-                          _ShowMobileNoTextField()
-                        ],
-                      ))),
-              SkNumberpad(
-                bgColor: ColorsUtils.orange,
-                textColor: Colors.white,
-                selectedNo: (value) {
-                  print(value);
-                  setState(() {
-                    mobileNoController.text = value;
-                  });
-                },
-                doneSelected: (value) {
-                  print('Done Selected');
-                  Navigator.pushNamed(
-                    context,
-                    '/OTPScreen',
-                  ).then((value) {
-                    mobileNoController.text = '';
-                  });
-                },
-              )
-            ],
-          )),
-    );
-  }
-
-  Widget _ShowMobileNoTextField() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
-      child: new TextField(
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(10),
-        ],
-        cursorColor: Theme.of(context).primaryColor,
-        controller: mobileNoController,
-        maxLines: 1,
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        focusNode: _mobileNoFocus,
-        textInputAction: TextInputAction.done,
-        onSubmitted: (term) {
-          _mobileNoFocus.unfocus();
+      key: _globalKey,
+      body: SKOnboardingScreen(
+        bgColor: Colors.white,
+        themeColor: const Color(0xFFf74269),
+        pages: pages,
+        skipClicked: (value) {
+          print(value);
+          _globalKey.currentState.showSnackBar(SnackBar(
+            content: Text("Skip clicked"),
+          ));
         },
-        style: new TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 16.0,
-            color: ColorsUtils.black),
-        decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff8C8C8C)),
-            ),
-            labelStyle: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w400,
-                color: ColorsUtils.grey),
-            hintStyle: TextStyle(
-              color: ColorsUtils.grey,
-            ),
-            border: new UnderlineInputBorder(borderSide: BorderSide.none)),
+        getStartedClicked: (value) {
+          print(value);
+          _globalKey.currentState.showSnackBar(SnackBar(
+            content: Text("Get Started clicked"),
+          ));
+        },
       ),
     );
   }
+
+  final pages = [
+    SkOnboardingModel(
+        title: 'Choose your item',
+        description:
+            'Easily find your grocery items and you will get delivery in wide range',
+        titleColor: Colors.black,
+        descripColor: const Color(0xFF929794),
+        imagePath: 'assets/onboarding1.png'),
+    SkOnboardingModel(
+        title: 'Pick Up or Delivery',
+        description:
+            'We make ordering fast, simple and free-no matter if you order online or cash',
+        titleColor: Colors.black,
+        descripColor: const Color(0xFF929794),
+        imagePath: 'assets/onboarding2.png'),
+    SkOnboardingModel(
+        title: 'Pay quick and easy',
+        description: 'Pay for order using credit or debit card',
+        titleColor: Colors.black,
+        descripColor: const Color(0xFF929794),
+        imagePath: 'assets/onboarding3.png'),
+  ];
 }
-
 ```
-

@@ -1,11 +1,11 @@
 {
-    "name": "sk_numberpad_example",
-    "short_name": "sk_numberpad_example",
+    "name": "example",
+    "short_name": "example",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Demonstrates how to use the sk_numberpad plugin.",
+    "description": "A new Flutter application.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,19 +1,20 @@
-# SKNumberPad
-
+# SKOnBoarding Screen
+ 
 A library that walks a user through multiple on-boarding screens in a simple and easy way
   
  [![Flutter](https://img.shields.io/badge/Platform-Flutter-blue.svg)](https://flutter.dev/)
-
+ 
 ## GIF
-![SKNumberPadDemo](https://user-images.githubusercontent.com/10756609/75851195-0afb8e80-5e0f-11ea-84a0-08d12b8ac018.gif)
+
+![SKOnBoarding Demo](https://user-images.githubusercontent.com/10756609/74606492-cecdeb80-50f6-11ea-9cdb-a4497a718dc8.gif)
 
 ## 💻 Installation
 
-You just need to add `sk_number_pad` as a [dependency in your pubspec.yaml file.](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
+You just need to add `sk_onboarding_screen` as a [dependency in your pubspec.yaml file.](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
 
 ```yaml
 dependencies:
-sk_number_pad: ^0.0.1
+sk_onboarding_screen: ^1.0.0
 ```
 
 ## Usage
@@ -21,30 +22,56 @@ sk_number_pad: ^0.0.1
 ### Import this class
 
 ```dart
-import 'package:sk_numberpad/sk_numberpad.dart';
+import 'package:sk_onboarding_screen/sk_onboarding_screen.dart;
 ```
 
-## SKNumberPadWidget
+## SKOnboardingModel
 
 ```dart
-@override
-Widget build(BuildContext context) {
-  // TODO: implement build
-  return Scaffold(
-    body:SkNumberpad(
-      bgColor: ColorsUtils.orange,
-      textColor: Colors.white,
-      selectedNo: (value) {
-        print(value);
-      },
-      doneSelected: (value) {
-        print('Done Selected');
-      },
-    )
-  );
-}
+  final pages = [
+    SkOnboardingModel(
+        title: 'Choose your item',
+        description:
+            'Easily find your grocery items and you will get delivery in wide range',
+        titleColor: Colors.black,
+        descripColor: const Color(0xFF929794),
+        imagePath: 'assets/onboarding1.png'),
+    SkOnboardingModel(
+        title: 'Pick Up or Delivery',
+        description:
+            'We make ordering fast, simple and free-no matter if you order online or cash',
+        titleColor: Colors.black,
+        descripColor: const Color(0xFF929794),
+        imagePath: 'assets/onboarding2.png'),
+    SkOnboardingModel(
+        title: 'Pay quick and easy',
+        description: 'Pay for order using credit or debit card',
+        titleColor: Colors.black,
+        descripColor: const Color(0xFF929794),
+        imagePath: 'assets/onboarding3.png'),
+  ];
 ```
+### Pass it into SKOnboardingScreen Widget
 
+```dart
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      body: SKOnboardingScreen(
+        bgColor: Colors.white,
+        themeColor: const Color(0xFFf74269),
+        pages: pages,
+        skipClicked: (value) {
+          print("Skip");
+        },
+        getStartedClicked: (value) {
+          print("Get Started");
+        },
+      ),
+    );
+  }
+```
 
 ## 📃License
 
