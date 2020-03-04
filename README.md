@@ -13,7 +13,7 @@ You just need to add `sk_number_pad` as a [dependency in your pubspec.yaml file.
 
 ```yaml
 dependencies:
-sk_numberpad: ^0.0.2
+sk_numberpad: ^1.0.0
 ```
 
 ## Usage
