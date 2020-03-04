@@ -21,7 +21,7 @@ sk_numberpad: ^0.0.2
 ### Import this class
 
 ```dart
-import 'package:sk_numberpad/sk_number_pad.dart';
+import 'package:sk_numberpad/sk_numberpad.dart';
 ```
 
 ## SKNumberPadWidget
