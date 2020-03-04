@@ -173,7 +173,7 @@ class OTPScreenState extends State<OTPScreen> {
                                       ))),
                         ]))),
             SkNumberpad(
-              bgColor: Color(0xffFD7A54),
+              bgColor: ColorsUtils.orange,
               textColor: Colors.white,
               selectedNo: (value) {
                 print(value);
