@@ -1,29 +1,7 @@
-# SKNumberPad Example
-
-```dart
 import 'package:flutter/material.dart';
-import 'package:sk_numberpad_example/otp_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:sk_numberpad/sk_numberpad.dart';
 import 'package:sk_numberpad_example/colors.dart';
-import 'login_screen.dart';
-
-var routes = <String, WidgetBuilder>{
-  "/OTPScreen": (BuildContext context) => OTPScreen(),
-};
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-      routes: routes,
-    );
-  }
-}
 
 class LoginPage extends StatefulWidget {
   @override
@@ -146,6 +124,3 @@ class LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-```
-

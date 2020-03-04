@@ -1,4 +1,4 @@
-package example.senthil.com.example
+package numberpad.sk.com.sk_numberpad_example
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
