@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sk_numberpad/sk_numberpad.dart';
+import 'package:sk_numberpad/sk_number_pad.dart';
 
 import 'colors.dart';
 

@@ -13,7 +13,7 @@ You just need to add `sk_number_pad` as a [dependency in your pubspec.yaml file.
 
 ```yaml
 dependencies:
-sk_number_pad: ^0.0.1
+sk_number_pad: ^0.0.2
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ sk_number_pad: ^0.0.1
 ### Import this class
 
 ```dart
-import 'package:sk_numberpad/sk_numberpad.dart';
+import 'package:sk_numberpad/sk_number_pad.dart';
 ```
 
 ## SKNumberPadWidget

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sk_numberpad/sk_numberpad.dart';
+import 'package:sk_numberpad/sk_number_pad.dart';
 import 'package:sk_numberpad_example/colors.dart';
 
 class LoginPage extends StatefulWidget {
