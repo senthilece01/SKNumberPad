@@ -4,17 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SkNumberPad extends StatefulWidget {
-  Color bgColor;
-  Color textColor;
-  final ValueChanged<String> selectedNo;
-  final ValueChanged<String> doneSelected;
+  Color? bgColor;
+  Color? textColor;
+  final ValueChanged<String>? selectedNo;
+  final ValueChanged<String>? doneSelected;
 
   SkNumberPad(
       {this.bgColor, this.textColor, this.selectedNo, this.doneSelected});
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return SkNumberPadScreen();
   }
 }
@@ -24,13 +23,11 @@ class SkNumberPadScreen extends State<SkNumberPad> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: numberPadWidget(),
@@ -80,7 +77,7 @@ class SkNumberPadScreen extends State<SkNumberPad> {
             onTap: () {
               print("Sfsf");
               previousText = previousText + text;
-              widget.selectedNo(previousText);
+              widget.selectedNo!(previousText);
             },
             child: Container(
               alignment: Alignment.center,
@@ -101,7 +98,6 @@ class SkNumberPadScreen extends State<SkNumberPad> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(8))),
               child: MaterialButton(
@@ -112,14 +108,13 @@ class SkNumberPadScreen extends State<SkNumberPad> {
                       var removedText =
                           previousText.substring(0, previousText.length - 1);
                       previousText = removedText;
-                      widget.selectedNo(removedText);
+                      widget.selectedNo!(removedText);
                     } else {
-                      widget.selectedNo("");
+                      widget.selectedNo!("");
                     }
                   } else {
                     // Done
-
-                    widget.doneSelected("Done Selected");
+                    widget.doneSelected!("Done Selected");
                   }
                 },
                 child: Icon(icon, color: widget.textColor),

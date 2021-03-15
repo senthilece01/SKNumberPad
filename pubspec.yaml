@@ -1,11 +1,11 @@
 name: sk_numberpad
 description: Fast and easy to use custom number pad library for Flutter
-version: 1.0.0
+version: 1.0.0+1
 author: Senthil Kumar<senthilece01@gmail.com>
 homepage: https://github.com/senthilece01/SKNumberPad.git
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
